@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<DisplayModel>
+<table class="table table-bordered">
+    <tr>
+        <th>Image</th>
+        <th>Blob Name</th>
+        <th>Description</th>
+        <th>Content</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td><img src="@item.DisplayUri" width="50" height="60" /></td>
+            <td>@item.DisplayName</td>
+            <td>@item.DisplayDescription</td>
+            <td>@item.DisplayContent</td>
+            <td>
+                <a asp-action="Details" asp-route-blobName="@item.DisplayName">Preview</a>
+                <a asp-action="Download" asp-route-blobName="@item.DisplayName">Download</a>
+                <a asp-action="Delete" asp-route-blobName="@item.DisplayName">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
